@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class COrder(models.Model):
+class C_Order(models.Model):
     o_id = models.BigIntegerField(primary_key=True)
     o_type = models.CharField(max_length=8, blank=True, null=True)
     o_date = models.DateField(blank=True, null=True)
