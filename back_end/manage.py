@@ -2,6 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import cx_Oracle
+cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_9")
+
+
 
 
 def main():
