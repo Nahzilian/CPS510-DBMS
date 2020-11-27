@@ -6,43 +6,22 @@ class Customer(models.Model):
     address = models.CharField(max_length=30,null=False)
     contact_info = models.CharField(max_length=30,null=False,unique=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'customer'
-
-
 class Driver(models.Model):
     d_id = models.BigIntegerField(primary_key=True)
     d_name = models.CharField(max_length=20,null=False)
     rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True, null=True)
     vehicle_info = models.CharField(max_length=25,null=False,unique=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'driver'
-
-
 class Restaurant(models.Model):
     v_id = models.BigIntegerField(primary_key=True)
     v_name = models.CharField(max_length=40,null=False)
     cuisine = models.CharField(max_length=20, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'restaurant'
 
 class GroceryStore(models.Model):
     v_id = models.BigIntegerField(primary_key=True)
     v_name = models.CharField(max_length=40,null=False)
     product_type = models.CharField(max_length=20, blank=True, null=True)
-
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'grocery_store'
 
 
 class RestaurantBranch(models.Model):
@@ -51,10 +30,6 @@ class RestaurantBranch(models.Model):
     r_phone = models.CharField(unique=True, max_length=20, blank=True, null=True)
     v = models.ForeignKey(Restaurant, models.DO_NOTHING, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'restaurant_branch'
 
 class StoreBranch(models.Model):
     g_id = models.BigIntegerField(primary_key=True)
@@ -62,10 +37,6 @@ class StoreBranch(models.Model):
     g_phone = models.CharField(unique=True, max_length=20, blank=True, null=True)
     v = models.ForeignKey(GroceryStore, models.DO_NOTHING, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'store_branch'
 
 
 class Menu(models.Model):
@@ -73,21 +44,12 @@ class Menu(models.Model):
     cat = models.CharField(max_length=10)
     r = models.ForeignKey('RestaurantBranch', models.DO_NOTHING, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'menu'
-
 
 class Catalog(models.Model):
     cat_id = models.BigIntegerField(primary_key=True)
     cat = models.CharField(max_length=15)
     g = models.ForeignKey('StoreBranch', models.DO_NOTHING, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'catalog'
 
 
 class Food(models.Model):
@@ -97,10 +59,6 @@ class Food(models.Model):
     description = models.CharField(max_length=150, blank=True, null=True)
     m = models.ForeignKey('Menu', models.DO_NOTHING, blank=True, null=True)
 
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'food'
 
 
 class Product(models.Model):
@@ -109,11 +67,6 @@ class Product(models.Model):
     quantity = models.BigIntegerField()
     description = models.CharField(max_length=150, blank=True, null=True)
     cat = models.ForeignKey(Catalog, models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'product'
 
 
 
@@ -125,8 +78,3 @@ class C_Order(models.Model):
     f_name = models.ForeignKey('Food', models.DO_NOTHING, db_column='f_name', blank=True, null=True)
     c = models.ForeignKey('Customer', models.DO_NOTHING, blank=True, null=True)
     d = models.ForeignKey('Driver', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        app_label = ''
-        managed = False
-        db_table = 'c_order'

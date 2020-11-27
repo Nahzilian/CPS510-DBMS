@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dbms'
+    'dbms.apps.DbmsConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +70,9 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_DIRS = (
+    r'..\dbms\templates',
+)
 WSGI_APPLICATION = 'back_end.wsgi.application'
 
 
