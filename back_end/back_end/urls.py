@@ -19,5 +19,5 @@ from dbms import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('customer/',views.list_customers)
+    path('customer/',views.list_customers, name = 'customers')
 ]

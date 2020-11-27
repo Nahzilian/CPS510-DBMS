@@ -13,14 +13,18 @@
         <th>address</th>
         <th>contact_info</th>
       </tr>
-      {% for customer in Customer %}
+      {% if customer %}
+      {% for c in customer %}
       <tr>
-        <td>{{customer.c_id}}</td>
-        <td>{{customer.c_name }}</td>
-        <td>{{customer.address}}</td>
-        <td>{{customer.contact_info}}</td>
+        <td>{{c.c_id}}</td>
+        <td>{{c.c_name }}</td>
+        <td>{{c.address}}</td>
+        <td>{{c.contact_info}}</td>
       </tr>
       {% endfor %}
+      {% else %}
+            <strong>There are no categories present.</strong>
+      {% endif %}
     </table>
   </body>
 </html>
