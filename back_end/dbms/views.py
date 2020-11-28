@@ -2,6 +2,7 @@ from django.shortcuts import render
 from dbms.models import *
 import subprocess
 from datetime import datetime
+import os
 
 # Global variables
 test = "1"
@@ -58,7 +59,8 @@ def list_catalog(request):
 # SQL Query pages
 def create_table(request):
     try:
-        subprocess.call([r'C:\Users\ducng\Documents\Github\CPS510-DBMS\back_end\dbms\bat_files\create_tables.bat'])
+        fn = os.getcwd() + "/dbms/bat_files/create_tables.bat"
+        subprocess.call([fn])
         return render(request, 'create_table.html',{'success':True})
     except Exception as msg:
         print(msg)
@@ -66,16 +68,30 @@ def create_table(request):
         return render(request,'create_table.html', {'success':False})
 
 def drop_table(request):
-    subprocess.call([r'.\bat_files\drop_tables.bat'])
-    return render(request, 'drop_table.html')
+    try:
+        fn = os.getcwd() + "/dbms/bat_files/drop_tables.bat"
+        subprocess.call([fn])
+        return render(request, 'drop_table.html', {'success': True})
+    except Exception as msg:
+        print(msg)
+        write_to_log('errors',msg)
+        return render(request,'drop_table.html', {'success':False})
 
 def populate_table(request):
-    subprocess.call([r'.\bat_files\populate_tables.bat'])
-    return render(request, 'populate_table.html')
+    try:
+        fn = os.getcwd() + "/dbms/bat_files/populate_tables.bat"
+        subprocess.call([fn])
+        return render(request, 'populate_table.html', {'success':False})
+    except Exception as msg:
+        print(msg)
+        write_to_log('errors',msg)
+        return render(request,'populate_table.html', {'success':False})
 
 def query(request):
     return render(request, 'query.html')
 
 # Log handler
 def write_to_log(filename, context):
-    open(f'/logs/{filename}.txt','a').write(f"\nAccessed on: {str(datetime.now())}\n Context:\n{context}")
+    print(os.getcwd())
+    path = str(os.getcwd()) + f'/dbms/logs/{filename}.txt'
+    open(path,'a').write(f"\nAccessed on: {str(datetime.now())}\n Context:\n{context}")
