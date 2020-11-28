@@ -2,23 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Customers</title>
+    <title>Grocery Stores</title>
   </head>
   <body>
-    <h1>Customers</h1>
+    <h1>Grocery Stores</h1>
     <table width="100%" border="1">
       <tr style="background-color: lightgray">
         <th>ID</th>
         <th>Name</th>
-        <th>Address</th>
-        <th>Contact-info</th>
+        <th>Product Type</th>
       </tr>
-      {% if customers %} {% for c in customers %}
+      {% if groceryStores %} {% for c in groceryStores %}
       <tr>
-        <td>{{c.c_id}}</td>
-        <td>{{c.c_name }}</td>
-        <td>{{c.address}}</td>
-        <td>{{c.contact_info}}</td>
+        <td>{{c.v_id}}</td>
+        <td>{{c.v_name }}</td>
+        <td>{{c.product_type}}</td>
       </tr>
       {% endfor %} {% else %}
       <strong>There are no categories present.</strong>

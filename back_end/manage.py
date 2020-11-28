@@ -6,8 +6,6 @@ import cx_Oracle
 cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_9")
 
 
-
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'back_end.settings')
