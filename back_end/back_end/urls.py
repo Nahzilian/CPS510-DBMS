@@ -18,9 +18,16 @@ from django.urls import path
 from dbms import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('customer/',views.list_customers, name = 'customers'),
     path('',views.index, name = 'index'),
+    path('admin/', admin.site.urls),
+    
+    path('customer/',views.list_customers, name = 'customers'),
+    path('drivers/',views.list_drivers, name = 'drivers'),
+    path('grocerystores/',views.list_grocerystore, name = 'grocerystore'),
+    path('restaurants/', views.list_restaurants, name = 'restaurants'),
+    path('restaurant_branch/', views.list_restaurantbranch, name = 'restaurant_branch'),
+    path('store_branch/', views.list_storebranch, name = 'store_branch'),
+    
     path('create_table/',views.create_table, name = 'create_table'),
     path('drop_table/',views.drop_table, name = 'drop_table'),
     path('populate_table/',views.populate_table, name = 'populate_table'),
