@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from dbms.models import *
-# import cx_Oracle
+import subprocess
 
 # Global variables
 test = "1"
-# connection = cx_Oracle.connect('c##user1','password',"localhost:1521/orcl")
-# cursor = connection.cursor()
 
 # Index page
 def index(request):
@@ -58,29 +56,17 @@ def list_catalog(request):
     
 # SQL Query pages
 def create_table(request):
-    print("Hello world!")
+    subprocess.call([r'./bat_files/create_tables.bat'])
     return render(request, 'create_table.html')
 
 def drop_table(request):
+    subprocess.call([r'./bat_files/drop_tables.bat'])
     return render(request, 'drop_table.html')
 
 def populate_table(request):
+    subprocess.call([r'./bat_files/populate_tables.bat'])
     return render(request, 'populate_table.html')
 
 def query(request):
     return render(request, 'query.html')
-
-# def execute_sql_script(filename):
-#     f = open(f'{filename}.sql','r')
-#     sql_file_context = f.read()
-#     f.close()
-
-#     sql_commands = sql_file_context.split(";")
-#     for command in sql_commands:
-#         try:
-#             cursor.execute(command)
-#         except (Exception) as msg:
-#             print(f"Command skipped: {msg}")
-
-            
 
