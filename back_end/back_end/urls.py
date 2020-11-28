@@ -27,6 +27,11 @@ urlpatterns = [
     path('restaurants/', views.list_restaurants, name = 'restaurants'),
     path('restaurant_branch/', views.list_restaurantbranch, name = 'restaurant_branch'),
     path('store_branch/', views.list_storebranch, name = 'store_branch'),
+    path('menu/', views.list_menu, name = 'menu'),
+    path('order/', views.list_order, name = 'order'),
+    path('product/', views.list_product, name = 'product'),
+    path('food/', views.list_food, name = 'food'),
+    path('catalog/', views.list_catalog, name = 'catalog'),
     
     path('create_table/',views.create_table, name = 'create_table'),
     path('drop_table/',views.drop_table, name = 'drop_table'),
