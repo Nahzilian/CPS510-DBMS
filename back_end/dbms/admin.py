@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import C_Order
+from .models import Customer
 
-admin.site.register(C_Order)
+admin.site.register(Customer)
