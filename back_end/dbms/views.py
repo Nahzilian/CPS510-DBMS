@@ -2,6 +2,7 @@ from django.shortcuts import render
 from dbms.models import *
 import subprocess
 from datetime import datetime
+import os
 
 # Global variables
 test = "1"
@@ -55,10 +56,14 @@ def list_catalog(request):
     catalogs = Catalog.objects.all()
     return render(request, 'catalog.html', {'catalogs': catalogs})
     
+
+# cwd = os.path.dirname(__file__)
+cwd = os.getcwd()
 # SQL Query pages
 def create_table(request):
     try:
-        subprocess.call([r'C:\Users\ducng\Documents\Github\CPS510-DBMS\back_end\dbms\bat_files\create_tables.bat'])
+        path=os.path.join(cwd,r'\bat_files\create_tables.bat')
+        subprocess.call([path])
         return render(request, 'create_table.html',{'success':True})
     except Exception as msg:
         print(msg)
