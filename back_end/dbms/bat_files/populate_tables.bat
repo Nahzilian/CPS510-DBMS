@@ -1,1 +1,1 @@
-sqlplus c##user1/password @C:\Users\danme\Documents\Code\CPS510\assign9\back_end\dbms\bat_files\populate_tables.sql
+sqlplus c##user1/password @.\dbms\bat_files\populate_tables.sql
