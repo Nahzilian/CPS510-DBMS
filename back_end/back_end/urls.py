@@ -19,5 +19,10 @@ from dbms import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('customer/',views.list_customers, name = 'customers')
+    path('customer/',views.list_customers, name = 'customers'),
+    path('',views.index, name = 'index'),
+    path('create_table/',views.create_table, name = 'create_table'),
+    path('drop_table/',views.drop_table, name = 'drop_table'),
+    path('populate_table/',views.populate_table, name = 'populate_table'),
+    path('query/',views.query, name = 'query')
 ]
