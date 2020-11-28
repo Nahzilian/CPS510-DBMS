@@ -74,7 +74,8 @@ def create_table(request):
 def drop_table(request):
     try:
         fn = os.getcwd() + "/dbms/bat_files/drop_tables.bat"
-        subprocess.call([fn])
+        my_env = os.environ.copy()
+        subprocess.run([fn],env=my_env)
         return render(request, 'drop_table.html', {'success': True})
     except Exception as msg:
         print(msg)
@@ -84,7 +85,8 @@ def drop_table(request):
 def populate_table(request):
     try:
         fn = os.getcwd() + "/dbms/bat_files/populate_tables.bat"
-        subprocess.call([fn])
+        my_env = os.environ.copy()
+        subprocess.run([fn],env=my_env)
         return render(request, 'populate_table.html', {'success':False})
     except Exception as msg:
         print(msg)
