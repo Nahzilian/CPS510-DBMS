@@ -32,7 +32,7 @@ def list_storebranch(request):
 
 def list_restaurantbranch(request):
     restaurant_b = RestaurantBranch.objects.all()
-    return render(request,'restaurantBranch.html', {'restaurantbranches':restaurant_b})
+    return render(request,'restaurantbranch.html', {'restaurantbranches':restaurant_b})
 
 def list_menu(request):
     menu = Menu.objects.all()
