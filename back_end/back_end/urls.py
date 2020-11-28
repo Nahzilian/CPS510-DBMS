@@ -21,7 +21,7 @@ urlpatterns = [
     path('',views.index, name = 'index'),
     path('admin/', admin.site.urls),
     
-    path('customer/',views.list_customers, name = 'customers'),
+    path('customers/',views.list_customers, name = 'customers'),
     path('drivers/',views.list_drivers, name = 'drivers'),
     path('grocerystores/',views.list_grocerystore, name = 'grocerystore'),
     path('restaurants/', views.list_restaurants, name = 'restaurants'),

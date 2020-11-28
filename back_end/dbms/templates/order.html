@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Orders</title>
+  </head>
+  <body>
+    <h1>Orders</h1>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Order ID</th>
+        <th>Order Type</th>
+        <th>Order Date</th>
+        <th>Product</th>
+        <th>Food</th>
+        <th>Customer ID</th>
+        <th>Driver ID</th>
+      </tr>
+      {% if orders %} {% for c in orders %}
+      <tr>
+        <td>{{c.o_id}}</td>
+        <td>{{c.o_type }}</td>
+        <td>{{c.o_date}}</td>
+        <td>{{c.p_name}}</td>
+        <td>{{c.f_name}}</td>
+        <td>{{c.c}}</td>
+        <td>{{c.d}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </body>
+</html>

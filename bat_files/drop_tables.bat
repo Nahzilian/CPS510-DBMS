@@ -1,0 +1,1 @@
+sqlplus c##user1/password @drop_tables.sql

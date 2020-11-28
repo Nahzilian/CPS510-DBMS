@@ -8,13 +8,13 @@
     <h1>Catalogs</h1>
     <table width="100%" border="1">
       <tr style="background-color: lightgray">
-        <th>ID</th>
+        <th>Catalog ID</th>
         <th>Category</th>
-        <th>Grocery Store</th>
+        <th>Store Branch ID</th>
       </tr>
-      {% if storebranches %} {% for c in storebranches %}
+      {% if catalogs %} {% for c in catalogs %}
       <tr>
-        <td>{{c.cat.id}}</td>
+        <td>{{c.cat_id}}</td>
         <td>{{c.cat }}</td>
         <td>{{c.g}}</td>
       </tr>

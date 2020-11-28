@@ -8,15 +8,15 @@
     <h1>Grocery Store Branches</h1>
     <table width="100%" border="1">
       <tr style="background-color: lightgray">
-        <th>ID</th>
+        <th>Branch ID</th>
         <th>Location</th>
         <th>Phone</th>
-        <th>Grocery Store</th>
+        <th>Grocery Store ID</th>
       </tr>
       {% if storebranches %} {% for c in storebranches %}
       <tr>
         <td>{{c.g_id}}</td>
-        <td>{{c.g_name }}</td>
+        <td>{{c.g_location }}</td>
         <td>{{c.g_phone}}</td>
         <td>{{c.v}}</td>
       </tr>

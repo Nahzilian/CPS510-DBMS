@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Products</title>
+  </head>
+  <body>
+    <h1>Products</h1>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Food Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Menu ID</th>
+      </tr>
+      {% if products %} {% for c in products %}
+      <tr>
+        <td>{{c.p_name}}</td>
+        <td>{{c.price }}</td>
+        <td>{{c.quantity}}</td>
+        <td>{{c.description}}</td>
+        <td>{{c.cat}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </body>
+</html>

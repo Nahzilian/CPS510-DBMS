@@ -1,6 +1,6 @@
 #!/bin/sh
 #export LD_LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
-sqlplus64 "dmezhibo/Kapusta13@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"<<EOF
+sqlplus64 "dmezhibo/password@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))(CONNECT_DATA=(SID=orcl)))"<<EOF
 
 CREATE TABLE CUSTOMER (C_ID INTEGER PRIMARY KEY,C_NAME VARCHAR2 (20) NOT NULL, ADDRESS VARCHAR2 (30) NOT NULL,CONTACT_INFO VARCHAR2 (30) NOT NULL);
 
