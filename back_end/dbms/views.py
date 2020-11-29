@@ -25,12 +25,12 @@ def list_drivers(request):
 
 def list_grocerystore(request):
     grocerystores_1 = GroceryStore1.objects.all()
-    grocerystores_2 = GroceryStore1.objects.all()
+    grocerystores_2 = GroceryStore2.objects.all()
     return render(request, 'grocerystore.html', {'grocerystores_1': grocerystores_1, 'grocerystores_2': grocerystores_2})
 
 def list_restaurants(request):
     restaurants_1 = Restaurant1.objects.all()
-    restaurants_2 = Restaurant1.objects.all()
+    restaurants_2 = Restaurant2.objects.all()
     return render(request, 'restaurant.html', {'restaurants_1': restaurants_1,'restaurants_2': restaurants_2})
 
 def list_storebranch(request):

@@ -13,3 +13,5 @@ DROP TABLE RESTAURANT_1 cascade constraints;
 DROP TABLE RESTAURANT_2 cascade constraints;
 DROP TABLE GROCERY_STORE_1 cascade constraints;
 DROP TABLE GROCERY_STORE_2 cascade constraints;
+
+exit;
