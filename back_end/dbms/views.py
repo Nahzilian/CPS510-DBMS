@@ -121,7 +121,24 @@ def query(request):
     
     
 def view_tables(request):
-    print(1)
+    obj = {
+        "customers_1" : Customer1.objects.all(),
+        "customers_2" : Customer2.objects.all(),
+        "drivers" : Driver.objects.all(),
+        "grocerystores_1" : GroceryStore1.objects.all(),
+        "grocerystores_2" : GroceryStore1.objects.all(),
+        "restaurants_1" : Restaurant1.objects.all(),
+        "restaurants_2" : Restaurant1.objects.all(),
+        "storebranches" : StoreBranch.objects.all(),
+        "restaurantbranches" : RestaurantBranch.objects.all(),
+        "menus" : Menu.objects.all(),
+        "orders" : C_Order.objects.all(),
+        "products" : Product.objects.all(),
+        "foods" : Food.objects.all(),
+        "catalogs" : Catalog.objects.all()
+    }
+    return render(request, 'viewtables.html', obj)
+    
 
 
 # Log handler

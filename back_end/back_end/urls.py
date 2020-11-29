@@ -36,5 +36,7 @@ urlpatterns = [
     path('create_table/',views.create_table, name = 'create_table'),
     path('drop_table/',views.drop_table, name = 'drop_table'),
     path('populate_table/',views.populate_table, name = 'populate_table'),
-    path('query/',views.query, name = 'query')
+    path('query/',views.query, name = 'query'),
+
+    path('viewtables/',views.view_tables, name = 'viewtables')
 ]
