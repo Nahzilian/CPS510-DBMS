@@ -1,14 +1,24 @@
 from django.db import models
 
-class Customer(models.Model):
+class Customer1(models.Model):
     c_id = models.BigIntegerField(primary_key=True)
-    c_name = models.CharField(max_length=20)
     address = models.CharField(max_length=30)
-    contact_info = models.CharField(max_length=30)
+    contact_info = models.ForeignKey('Customer2', models.DO_NOTHING, db_column='contact_info', blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'customer'
+        db_table = 'customer_1'
+
+
+class Customer2(models.Model):
+    contact_info = models.CharField(primary_key=True, max_length=30)
+    c_name = models.CharField(max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'customer_2'
+
+
 
 
 class Driver(models.Model):
@@ -22,31 +32,46 @@ class Driver(models.Model):
         managed = False
         db_table = 'driver'
 
-
-class Restaurant(models.Model):
+class Restaurant1(models.Model):
     v_id = models.BigIntegerField(primary_key=True)
-    v_name = models.CharField(max_length=40)
+    v_name = models.ForeignKey('Restaurant2', models.DO_NOTHING, db_column='v_name', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'restaurant_1'
+
+
+class Restaurant2(models.Model):
+    v_name = models.CharField(primary_key=True, max_length=40)
     cuisine = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'restaurant'
+        db_table = 'restaurant_2'
 
-class GroceryStore(models.Model):
+class GroceryStore1(models.Model):
     v_id = models.BigIntegerField(primary_key=True)
-    v_name = models.CharField(max_length=40)
+    v_name = models.ForeignKey('GroceryStore2', models.DO_NOTHING, db_column='v_name', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'grocery_store_1'
+
+
+class GroceryStore2(models.Model):
+    v_name = models.CharField(primary_key=True, max_length=40)
     product_type = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'grocery_store'
+        db_table = 'grocery_store_2'
 
 class RestaurantBranch(models.Model):
     r_id = models.BigIntegerField(primary_key=True)
     r_location = models.CharField(max_length=100)
     r_phone = models.CharField(
         unique=True, max_length=20, blank=True, null=True)
-    v = models.ForeignKey(Restaurant, models.DO_NOTHING, blank=True, null=True)
+    v = models.ForeignKey(Restaurant1, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -58,7 +83,7 @@ class StoreBranch(models.Model):
     g_location = models.CharField(max_length=100)
     g_phone = models.CharField(
         unique=True, max_length=20, blank=True, null=True)
-    v = models.ForeignKey(GroceryStore, models.DO_NOTHING,
+    v = models.ForeignKey(GroceryStore1, models.DO_NOTHING,
                           blank=True, null=True)
 
     class Meta:
@@ -121,7 +146,7 @@ class C_Order(models.Model):
         'Product', models.DO_NOTHING, db_column='p_name', blank=True, null=True)
     f_name = models.ForeignKey(
         'Food', models.DO_NOTHING, db_column='f_name', blank=True, null=True)
-    c = models.ForeignKey('Customer', models.DO_NOTHING, blank=True, null=True)
+    c = models.ForeignKey('Customer1', models.DO_NOTHING, blank=True, null=True)
     d = models.ForeignKey('Driver', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
