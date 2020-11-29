@@ -1,12 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Queries</title>
-  </head>
-  <body>
-    <a class="btn btn-primary" href="http://localhost:8000/drop_table"
-      >Drop table</a
-    >
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Queries</title>
+</head>
+
+<body>
+  <a class="btn btn-primary" href="http://localhost:8000/drop_tables">Drop table</a>
+  <a class="btn btn-primary" href="http://localhost:8000/populate_tables">Back</a>
+  <div>
+    <h1>Query 1</h1>
+    <p>When user wants to get their orders on a certain date range with the delivery details (order by the newest to the
+      oldest) and join with driver’s name and rating</p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>ID</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Product</th>
+        <th>Food</th>
+        <th>Driver Name</th>
+        <th>Rating</th>
+      </tr>
+      {% if order_1 %} {% for c in order_1 %}
+      <tr>
+        <td>{{c.id}}</td>
+        <td>{{c.type}}</td>
+        <td>{{c.date}}</td>
+        <td>{{c.p_name}}</td>
+        <td>{{c.f_name}}</td>
+        <td>{{c.d_name}}</td>
+        <td>{{c.rating}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 2</h1>
+    <p>List the most popular food(s) item(the one with most quantity)
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Food</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Menu Id</th>
+      </tr>
+      {% if food %} {% for c in food %}
+      <tr>
+        <td>{{c.f_name}}</td>
+        <td>{{c.price}}</td>
+        <td>{{c.quantity}}</td>
+        <td>{{c.desc}}</td>
+        <td>{{c.m_id}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 3</h1>
+    <p>List the most expensive grocery order and the name of the customer that owns that order.
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Name</th>
+        <th>Order ID</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Product name</th>
+        <th>Food name</th>
+        <th>Customer ID</th>
+        <th>Driver ID</th>
+        <th>Price</th>
+      </tr>
+      {% if order_2 %} {% for c in order_2 %}
+      <tr>
+        <td>{{c.name}}</td>
+        <td>{{c.o_id}}</td>
+        <td>{{c.o_type}}</td>
+        <td>{{c.o_date}}</td>
+        <td>{{c.p_name}}</td>
+        <td>{{c.f_name}}</td>
+        <td>{{c.c_id}}</td>
+        <td>{{c.d_id}}</td>
+        <td>{{c.price}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 4</h1>
+    <p>List the average price of a certain menu at a certain restaurant
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Average</th>
+        <th>Vendor Name</th>
+      </tr>
+      {% if menu %} {% for c in menu %}
+      <tr>
+        <td>{{c.avg}}</td>
+        <td>{{c.vendor}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 5</h1>
+    <p>
+      Count the number of trips a specific driver completed during a certain month (In this case driver with D_ID = 5
+      and during January of 2021)</p>
+      <table width="100%" border="1">
+        <tr style="background-color: lightgray">
+          <th>Driver Id</th>
+          <th>Number of Trips</th>
+          </tr>
+        {% if trip_num %} {% for c in trip_num %}
+        <tr>
+          <td>{{c.d_id}}</td>
+          <td>{{c.trip_num}}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <strong>There are no categories present.</strong>
+        {% endif %}
+      </table>
+  </div>
+  <div>
+    <h1>Query 6</h1>
+    <p>Count the number of times a customer order at a specific restaurant during a specific year (In this case, we
+      looked for customer with c_id 9 and year 2021)
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Customer Id</th>
+        <th>Number of Orders</th>
+        </tr>
+      {% if order_num %} {% for c in order_num %}
+      <tr>
+        <td>{{c.c_id}}</td>
+        <td>{{c.num_order}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 7</h1>
+    <p>Group by order type (either delivery or pick up) of a certain month
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Order Type</th>
+        <th>Order Total</th>
+      </tr>
+      {% if order_type %} {% for c in order_type %}
+      <tr>
+        <td>{{c.type}}</td>
+        <td>{{c.total}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 8</h1>
+    <p>Group order by customer ID to see how many times each customer has ordered.
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Name</th>
+        <th>Orders</th>
+        </tr>
+      {% if customer %} {% for c in customer %}
+      <tr>
+        <td>{{c.name}}</td>
+        <td>{{c.orders}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 9</h1>
+    <p>List the number of trips each driver made during a specific year and list in descending order (the driver with
+      most trips will be placed first) (using count and group)
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Driver ID</th>
+        <th>Trips</th>
+        </tr>
+      {% if d_order %} {% for c in d_order %}
+      <tr>
+        <td>{{c.d_id}}</td>
+        <td>{{c.trips}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+  <div>
+    <h1>Query 10</h1>
+    <p>Shows Union of all orders with products and foods worth over $90
+    </p>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Order ID</th>
+        <th>Order Type</th>
+        <th>Order Date</th>
+        <th>Food</th>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+      {% if order_f %} {% for c in order_f %}
+      <tr>
+        <td>{{c.o_id}}</td>
+        <td>{{c.o_type}}</td>
+        <td>{{c.o_date}}</td>
+        <td>{{c.f_name}}</td>
+        <td>{{c.p_name}}</td>
+        <td>{{c.price}}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+  </div>
+
+</body>
+
 </html>
