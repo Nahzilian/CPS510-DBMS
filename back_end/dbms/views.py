@@ -6,93 +6,111 @@ import os
 from django.db import connection
 
 
-# Global variables
-test = "1"
-
 # Index page
 
-
 def index(request):
-    return render(request, 'index.html', {"test": test})
+    return render(request, 'index.html')
 
 # Listing all tables
+# Creating all views for tables based on given templates
 
-
+# View for customers table
 def list_customers(request):
     customers_1 = Customer1.objects.all()
     customers_2 = Customer2.objects.all()
     return render(request, 'customer.html', {'customers_1': customers_1, 'customers_2': customers_2})
 
-
+# View for drivers table
 def list_drivers(request):
     drivers = Driver.objects.all()
     return render(request, 'driver.html', {'drivers': drivers})
 
-
+# View for grocery stores table
 def list_grocerystore(request):
     grocerystores_1 = GroceryStore1.objects.all()
     grocerystores_2 = GroceryStore2.objects.all()
     return render(request, 'grocerystore.html', {'grocerystores_1': grocerystores_1, 'grocerystores_2': grocerystores_2})
 
-
+# View for restaurants table
 def list_restaurants(request):
     restaurants_1 = Restaurant1.objects.all()
     restaurants_2 = Restaurant2.objects.all()
     return render(request, 'restaurant.html', {'restaurants_1': restaurants_1, 'restaurants_2': restaurants_2})
 
-
+# View for stores branches table
 def list_storebranch(request):
     store_branches = StoreBranch.objects.all()
     return render(request, 'storebranch.html', {'storebranches': store_branches})
 
-
+# View for restaurant branches table
 def list_restaurantbranch(request):
     restaurant_b = RestaurantBranch.objects.all()
     return render(request, 'restaurantbranch.html', {'restaurantbranches': restaurant_b})
 
-
+# View for menus table
 def list_menu(request):
     menu = Menu.objects.all()
     return render(request, 'menu.html', {'menus': menu})
 
-
+#View for all orders
 def list_order(request):
     orders = C_Order.objects.all()
     return render(request, 'order.html', {'orders': orders})
 
-
+#View for all products
 def list_product(request):
     products = Product.objects.all()
     return render(request, 'product.html', {'products': products})
 
-
+#View for all food
 def list_food(request):
     foods = Food.objects.all()
     return render(request, 'food.html', {'foods': foods})
 
-
+#View for all catalogs
 def list_catalog(request):
     catalogs = Catalog.objects.all()
     return render(request, 'catalog.html', {'catalogs': catalogs})
 
+# View for all the table in the dbms
+def view_tables(request):
+    obj = {
+        "customers_1": Customer1.objects.all(),
+        "customers_2": Customer2.objects.all(),
+        "drivers": Driver.objects.all(),
+        "grocerystores_1": GroceryStore1.objects.all(),
+        "grocerystores_2": GroceryStore1.objects.all(),
+        "restaurants_1": Restaurant1.objects.all(),
+        "restaurants_2": Restaurant1.objects.all(),
+        "storebranches": StoreBranch.objects.all(),
+        "restaurantbranches": RestaurantBranch.objects.all(),
+        "menus": Menu.objects.all(),
+        "orders": C_Order.objects.all(),
+        "products": Product.objects.all(),
+        "foods": Food.objects.all(),
+        "catalogs": Catalog.objects.all()
+    }
+    return render(request, 'viewtables.html', obj)
 
-# cwd = os.path.dirname(__file__)
+
 cwd = os.getcwd()
 # SQL Query pages
 
+#The tables are created, dropped and populated running batch scripts that interact with the Oracle database
 
+#Function that creates Oracle tables
 def create_table(request):
     try:
-        fn = os.getcwd() + "/dbms/bat_files/create_tables.bat"
-        my_env = os.environ.copy()
-        subprocess.run([fn], env=my_env)
+        fn = os.getcwd() + "/dbms/bat_files/create_tables.bat"   #Gets path of the script by combining relative path and current working directory of the views.py file
+        my_env = os.environ.copy()  # Gets the environment variables so that python can pass them to the SQL subprocess
+        subprocess.run([fn], env=my_env) #Runs the script
         return render(request, 'create_table.html', {'success': True})
     except Exception as msg:
         print(msg)
         write_to_log('errors', msg)
         return render(request, 'create_table.html', {'success': False})
 
-
+#Function that drops Oracle tables
 def drop_table(request):
     try:
         fn = os.getcwd() + "/dbms/bat_files/drop_tables.bat"
@@ -104,7 +122,7 @@ def drop_table(request):
         write_to_log('errors', msg)
         return render(request, 'drop_table.html', {'success': False})
 
-
+#Function that populates Oracle tables
 def populate_table(request):
     try:
         fn = os.getcwd() + "/dbms/bat_files/populate_tables.bat"
@@ -116,7 +134,7 @@ def populate_table(request):
         write_to_log('errors', msg)
         return render(request, 'populate_table.html', {'success': False})
 
-
+# Helper function that execute sql query
 def execute_sql_query(command):
     try:
         with connection.cursor() as cursor:
@@ -128,6 +146,7 @@ def execute_sql_query(command):
         write_to_log('errors', msg)
         return []
 
+#Creating python data structures to process each of the complex queries
 
 def query(request):
     try:
@@ -216,28 +235,7 @@ def query(request):
         write_to_log('errors', msg)
         return render(request, 'query.html')
 
-
-def view_tables(request):
-    obj = {
-        "customers_1": Customer1.objects.all(),
-        "customers_2": Customer2.objects.all(),
-        "drivers": Driver.objects.all(),
-        "grocerystores_1": GroceryStore1.objects.all(),
-        "grocerystores_2": GroceryStore1.objects.all(),
-        "restaurants_1": Restaurant1.objects.all(),
-        "restaurants_2": Restaurant1.objects.all(),
-        "storebranches": StoreBranch.objects.all(),
-        "restaurantbranches": RestaurantBranch.objects.all(),
-        "menus": Menu.objects.all(),
-        "orders": C_Order.objects.all(),
-        "products": Product.objects.all(),
-        "foods": Food.objects.all(),
-        "catalogs": Catalog.objects.all()
-    }
-    return render(request, 'viewtables.html', obj)
-
-
-# Log handler
+# Log handler to check if there's any error while running the program
 def write_to_log(filename, context):
     print(os.getcwd())
     path = str(os.getcwd()) + f'/dbms/logs/{filename}.txt'

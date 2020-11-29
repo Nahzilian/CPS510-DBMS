@@ -1,5 +1,7 @@
 from django.db import models
 
+#Each model class represents a table in our Oracle Database
+
 class Customer1(models.Model):
     c_id = models.BigIntegerField(primary_key=True)
     address = models.CharField(max_length=30)

@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from dbms import views
 
+
+#Sets all url paths for every page and passes our python functions from the views file down to each respective page
+
 urlpatterns = [
     path('',views.index, name = 'index'),
     path('admin/', admin.site.urls),
-    
+    # Path to all tables
     path('customers/',views.list_customers, name = 'customers'),
     path('drivers/',views.list_drivers, name = 'drivers'),
     path('grocerystores/',views.list_grocerystore, name = 'grocerystore'),
@@ -32,11 +35,10 @@ urlpatterns = [
     path('products/', views.list_product, name = 'product'),
     path('food/', views.list_food, name = 'food'),
     path('catalogs/', views.list_catalog, name = 'catalog'),
-    
+    path('view_tables/',views.view_tables, name = 'viewtables'),
+    # Path to all sql script execution options
     path('create_tables/',views.create_table, name = 'create_table'),
     path('drop_tables/',views.drop_table, name = 'drop_table'),
     path('populate_tables/',views.populate_table, name = 'populate_table'),
-    path('query/',views.query, name = 'query'),
-
-    path('view_tables/',views.view_tables, name = 'viewtables')
+    path('query/',views.query, name = 'query')
 ]

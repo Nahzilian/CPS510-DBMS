@@ -79,6 +79,8 @@ WSGI_APPLICATION = 'back_end.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#Connects our application to the Oracle database
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
