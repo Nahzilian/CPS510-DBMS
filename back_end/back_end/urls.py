@@ -25,18 +25,18 @@ urlpatterns = [
     path('drivers/',views.list_drivers, name = 'drivers'),
     path('grocerystores/',views.list_grocerystore, name = 'grocerystore'),
     path('restaurants/', views.list_restaurants, name = 'restaurants'),
-    path('restaurant_branch/', views.list_restaurantbranch, name = 'restaurant_branch'),
-    path('store_branch/', views.list_storebranch, name = 'store_branch'),
-    path('menu/', views.list_menu, name = 'menu'),
-    path('order/', views.list_order, name = 'order'),
-    path('product/', views.list_product, name = 'product'),
+    path('restaurant_branches/', views.list_restaurantbranch, name = 'restaurant_branch'),
+    path('store_branches/', views.list_storebranch, name = 'store_branch'),
+    path('menus/', views.list_menu, name = 'menu'),
+    path('orders/', views.list_order, name = 'order'),
+    path('products/', views.list_product, name = 'product'),
     path('food/', views.list_food, name = 'food'),
-    path('catalog/', views.list_catalog, name = 'catalog'),
+    path('catalogs/', views.list_catalog, name = 'catalog'),
     
-    path('create_table/',views.create_table, name = 'create_table'),
-    path('drop_table/',views.drop_table, name = 'drop_table'),
-    path('populate_table/',views.populate_table, name = 'populate_table'),
+    path('create_tables/',views.create_table, name = 'create_table'),
+    path('drop_tables/',views.drop_table, name = 'drop_table'),
+    path('populate_tables/',views.populate_table, name = 'populate_table'),
     path('query/',views.query, name = 'query'),
 
-    path('viewtables/',views.view_tables, name = 'viewtables')
+    path('view_tables/',views.view_tables, name = 'viewtables')
 ]
