@@ -5,3 +5,6 @@ Accessed on: 2020-11-28 15:44:20.431456
 Accessed on: 2020-11-28 15:44:47.213493
  Context:
 [WinError 2] The system cannot find the file specified
+Accessed on: 2020-11-28 23:03:53.861050
+ Context:
+ORA-00942: table or view does not exist
