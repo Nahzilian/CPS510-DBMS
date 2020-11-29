@@ -19,8 +19,6 @@ class Customer2(models.Model):
         db_table = 'customer_2'
 
 
-
-
 class Driver(models.Model):
     d_id = models.BigIntegerField(primary_key=True)
     d_name = models.CharField(max_length=20)
@@ -101,8 +99,6 @@ class Catalog(models.Model):
         managed = False
         db_table = 'catalog'
 
-
-
 class Menu(models.Model):
     m_id = models.BigIntegerField(primary_key=True)
     cat = models.CharField(max_length=10)
@@ -124,7 +120,6 @@ class Food(models.Model):
         managed = False
         db_table = 'food'
 
-
 class Product(models.Model):
     p_name = models.CharField(primary_key=True, max_length=15)
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -135,8 +130,6 @@ class Product(models.Model):
     class Meta:
         managed = False
         db_table = 'product'
-
-
 
 class C_Order(models.Model):
     o_id = models.BigIntegerField(primary_key=True)

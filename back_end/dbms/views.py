@@ -15,20 +15,23 @@ def index(request):
 
 # Listing all tables
 def list_customers(request):
-    customers = Customer1.objects.all()
-    return render(request, 'customer.html', {'customers': customers})
+    customers_1 = Customer1.objects.all()
+    customers_2 = Customer2.objects.all()
+    return render(request, 'customer.html', {'customers_1': customers_1, 'customers_2':customers_2})
 
 def list_drivers(request):
     drivers = Driver.objects.all()
     return render(request, 'driver.html', {'drivers': drivers })
 
 def list_grocerystore(request):
-    grocerystores = GroceryStore1.objects.all()
-    return render(request, 'grocerystore.html', {'groceryStores': grocerystores})
+    grocerystores_1 = GroceryStore1.objects.all()
+    grocerystores_2 = GroceryStore1.objects.all()
+    return render(request, 'grocerystore.html', {'grocerystores_1': grocerystores_1, 'grocerystores_2': grocerystores_2})
 
 def list_restaurants(request):
-    restaurants = Restaurant1.objects.all()
-    return render(request, 'restaurant.html', {'restaurants': restaurants})
+    restaurants_1 = Restaurant1.objects.all()
+    restaurants_2 = Restaurant1.objects.all()
+    return render(request, 'restaurant.html', {'restaurants_1': restaurants_1,'restaurants_2': restaurants_2})
 
 def list_storebranch(request):
     store_branches = StoreBranch.objects.all()

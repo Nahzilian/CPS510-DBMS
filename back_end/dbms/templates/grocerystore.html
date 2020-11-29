@@ -10,11 +10,23 @@
       <tr style="background-color: lightgray">
         <th>ID</th>
         <th>Name</th>
-        <th>Product Type</th>
       </tr>
-      {% if grocerystores %} {% for c in grocerystores %}
+      {% if grocerystores_1 %} {% for c in grocerystores_1 %}
       <tr>
         <td>{{c.v_id}}</td>
+        <td>{{c.v_name }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Name</th>
+        <th>Product Type</th>
+      </tr>
+      {% if grocerystores_2 %} {% for c in grocerystores_2 %}
+      <tr>
         <td>{{c.v_name }}</td>
         <td>{{c.product_type}}</td>
       </tr>

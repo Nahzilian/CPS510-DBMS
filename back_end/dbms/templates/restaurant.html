@@ -10,11 +10,23 @@
       <tr style="background-color: lightgray">
         <th>ID</th>
         <th>Name</th>
-        <th>Cuisine</th>
       </tr>
-      {% if restaurants %} {% for c in restaurants %}
+      {% if restaurants_1 %} {% for c in restaurants_1 %}
       <tr>
         <td>{{c.v_id}}</td>
+        <td>{{c.v_name }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <strong>There are no categories present.</strong>
+      {% endif %}
+    </table>
+    <table width="100%" border="1">
+      <tr style="background-color: lightgray">
+        <th>Name</th>
+        <th>Cuisine</th>
+      </tr>
+      {% if restaurants_2 %} {% for c in restaurants_2 %}
+      <tr>
         <td>{{c.v_name }}</td>
         <td>{{c.cuisine}}</td>
       </tr>

@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Customers</title>
-  </head>
-  <body>
-    <h1>Customers</h1>
-    <table width="100%" border="1">
-      <tr style="background-color: lightgray">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Contact-info</th>
-      </tr>
-      {% if customers %} {% for c in customers %}
-      <tr>
-        <td>{{c.c_id}}</td>
-        <td>{{c.c_name }}</td>
-        <td>{{c.address}}</td>
-        <td>{{c.contact_info}}</td>
-      </tr>
-      {% endfor %} {% else %}
-      <strong>There are no categories present.</strong>
-      {% endif %}
-    </table>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Customers</title>
+</head>
+
+<body>
+  <h1>Customers</h1>
+  <table width="100%" border="1">
+    <tr style="background-color: lightgray">
+      <th>ID</th>
+      <th>Address</th>
+      <th>Contact-info</th>
+    </tr>
+    {% if customers_1 %} {% for c in customers_1 %}
+    <tr>
+      <td>{{c.c_id}}</td>
+      <td>{{c.address}}</td>
+      <td>{{c.contact_info}}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <strong>There are no categories present.</strong>
+    {% endif %}
+  </table>
+  <table width="100%" border="1">
+    <tr style="background-color: lightgray"> 
+      <th>Name</th>
+      <th>Contact-info</th>
+    </tr>
+    {% if customers_2 %} {% for c in customers_2 %}
+    <tr>
+      <td>{{c.c_name }}</td>
+      <td>{{c.contact_info}}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <strong>There are no categories present.</strong>
+    {% endif %}
+  </table>
+</body>
+
 </html>
