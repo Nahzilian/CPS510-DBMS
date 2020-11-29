@@ -148,4 +148,5 @@ dmypy.json
 .prof
 
 **/logs
+**/logs/errors.txt
 # End of https://www.toptal.com/developers/gitignore/api/django
