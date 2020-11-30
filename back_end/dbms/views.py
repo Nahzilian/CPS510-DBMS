@@ -128,7 +128,7 @@ def populate_table(request):
         fn = os.getcwd() + "/dbms/bat_files/populate_tables.bat"
         my_env = os.environ.copy()
         subprocess.run([fn], env=my_env)
-        return render(request, 'populate_table.html', {'success': False})
+        return render(request, 'populate_table.html', {'success': True})
     except Exception as msg:
         print(msg)
         write_to_log('errors', msg)
