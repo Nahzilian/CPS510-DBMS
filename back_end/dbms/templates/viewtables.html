@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tables</title>
+    <!--Boostrap CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      th {
+        background: #006992;
+        font-size: 25px;
+        padding: 10px;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tables</title>
+    <!--Boostrap CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <style>
+      th {
+        background: #006992;
+        font-size: 18px;
+        padding: 10px;
+        color: white;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        padding-top: 30px;
+      }
+
+      .center-text {
+        text-align: center;
+      }
+      .link-items {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+<body>
+  <div class="container">
+    <h1>All tables' view</h1>
+    <p class = "center-text">** Note: All of our tables are in 3NF and BCNF **</p>
+    <div class = "center-text">
+      <a class="btn btn-primary" href="http://localhost:8000/drop_tables">Drop table</a>
+      <a class="btn btn-primary" href="http://localhost:8000/admin">Admin view</a>
+      <a class="btn btn-primary" href="http://localhost:8000/query">View Queries</a>
+    </div>
+    <div >
+      <div id="customers">
+        <h1>Customers</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/customers">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>ID</th>
+            <th>Address</th>
+            <th>Contact info</th>
+          </tr>
+          {% if customers_1 %} {% for c in customers_1 %}
+          <tr>
+            <td>{{c.c_id}}</td>
+            <td>{{c.address}}</td>
+            <td>{{c.contact_info}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+        <br />
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Name</th>
+            <th>Contact info</th>
+          </tr>
+          {% if customers_2 %} {% for c in customers_2 %}
+          <tr>
+            <td>{{c.c_name }}</td>
+            <td>{{c.contact_info}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="drivers">
+        <h1>Drivers</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/drivers">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Vehicle Info</th>
+          </tr>
+          {% if drivers %} {% for c in drivers %}
+          <tr>
+            <td>{{c.d_id}}</td>
+            <td>{{c.d_name }}</td>
+            <td>{{c.rating}}</td>
+            <td>{{c.vehicle_info}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="restaurants">
+        <h1>Restaurants</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/restaurants">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+          {% if restaurants_1 %} {% for c in restaurants_1 %}
+          <tr>
+            <td>{{c.v_id}}</td>
+            <td>{{c.v_name }}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+        <br />
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Name</th>
+            <th>Cuisine</th>
+          </tr>
+          {% if restaurants_2 %} {% for c in restaurants_2 %}
+          <tr>
+            <td>{{c.v_name }}</td>
+            <td>{{c.cuisine}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="grocerystores">
+        <h1>Grocery Stores</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/grocerystores">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+          {% if grocerystores_1 %} {% for c in grocerystores_1 %}
+          <tr>
+            <td>{{c.v_id}}</td>
+            <td>{{c.v_name }}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+        <br />
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Name</th>
+            <th>Product Type</th>
+          </tr>
+          {% if grocerystores_2 %} {% for c in grocerystores_2 %}
+          <tr>
+            <td>{{c.v_name }}</td>
+            <td>{{c.product_type}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="restaurantbranches">
+        <h1>Restaurant Branches</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/restaurant_branches"
+            >View this table >>></a
+          >
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Branch ID</th>
+            <th>Location</th>
+            <th>Phone</th>
+            <th>Restaurant ID</th>
+          </tr>
+          {% if restaurantbranches %} {% for c in restaurantbranches %}
+          <tr>
+            <td>{{c.r_id}}</td>
+            <td>{{c.r_location }}</td>
+            <td>{{c.r_phone}}</td>
+            <td>{{c.v}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="storebranches">
+        <h1>Grocery Store Branches</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/store_branches">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Branch ID</th>
+            <th>Location</th>
+            <th>Phone</th>
+            <th>Grocery Store ID</th>
+          </tr>
+          {% if storebranches %} {% for c in storebranches %}
+          <tr>
+            <td>{{c.g_id}}</td>
+            <td>{{c.g_location }}</td>
+            <td>{{c.g_phone}}</td>
+            <td>{{c.v}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="menu">
+        <h1>Menus</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/menus">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Menu ID</th>
+            <th>Category</th>
+            <th>Restaurant Branch ID</th>
+          </tr>
+          {% if menus %} {% for c in menus %}
+          <tr>
+            <td>{{c.m_id}}</td>
+            <td>{{c.cat }}</td>
+            <td>{{c.r}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="catalog">
+        <h1>Catalogs</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/catalogs">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Catalog ID</th>
+            <th>Category</th>
+            <th>Store Branch ID</th>
+          </tr>
+          {% if catalogs %} {% for c in catalogs %}
+          <tr>
+            <td>{{c.cat_id}}</td>
+            <td>{{c.cat }}</td>
+            <td>{{c.g}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="food">
+        <h1>Foods</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/food">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Food Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Menu ID</th>
+          </tr>
+          {% if foods %} {% for c in foods %}
+          <tr>
+            <td>{{c.f_name}}</td>
+            <td>{{c.price }}</td>
+            <td>{{c.quantity}}</td>
+            <td>{{c.description}}</td>
+            <td>{{c.m}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="product">
+        <h1>Products</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/products">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Food Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Menu ID</th>
+          </tr>
+          {% if products %} {% for c in products %}
+          <tr>
+            <td>{{c.p_name}}</td>
+            <td>{{c.price }}</td>
+            <td>{{c.quantity}}</td>
+            <td>{{c.description}}</td>
+            <td>{{c.cat}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+      <div id="corder">
+        <h1>Orders</h1>
+        <div class="link-items">
+          <a href="http://localhost:8000/orders">View this table >>></a>
+        </div>
+        <table width="100%" border="1">
+          <tr style="background-color: lightgray">
+            <th>Order ID</th>
+            <th>Order Type</th>
+            <th>Order Date</th>
+            <th>Product</th>
+            <th>Food</th>
+            <th>Customer ID</th>
+            <th>Driver ID</th>
+          </tr>
+          {% if orders %} {% for c in orders %}
+          <tr>
+            <td>{{c.o_id}}</td>
+            <td>{{c.o_type }}</td>
+            <td>{{c.o_date}}</td>
+            <td>{{c.p_name}}</td>
+            <td>{{c.f_name}}</td>
+            <td>{{c.c}}</td>
+            <td>{{c.d}}</td>
+          </tr>
+          {% endfor %} {% else %}
+          <strong>There are no categories present.</strong>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+    <br />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

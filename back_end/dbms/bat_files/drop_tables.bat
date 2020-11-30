@@ -1,0 +1,1 @@
+sqlplus c##user1/password @.\dbms\bat_files\drop_tables.sql

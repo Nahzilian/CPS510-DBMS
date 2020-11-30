@@ -1,0 +1,1 @@
+sqlplus c##user1/password @.\dbms\bat_files\populate_tables.sql
